@@ -18,44 +18,61 @@ const Experience = () => {
           margin: '0 auto'
         }}
       >
-        <SpotlightCard spotlightColor="rgba(0, 229, 255, 0.2)">
-          <h3 style={{ fontSize: '1.6rem', margin: 0 }}><span style={{ color: '#00aaff', fontWeight: 600 }}>AI Intern</span> @ Volza</h3>
-          <p style={{ fontSize: '1rem', opacity: 0.9, lineHeight: 1.6 }}>
-            Built a structured parsing system using LLMs to extract clean product data. Optimized inference with Qwen and Mistral models for performance. Implemented semantic filtering and multi-threaded post-processing using quantized models.
-          </p>
-          <p style={{ fontSize: '0.9rem', color: '#999' }}>Jul 2025 – Present · Remote</p>
+        <SpotlightCard spotlightColor="rgba(142, 142, 255, 0.83)">
+          <h3 style={{ fontSize: '1.6rem', margin: 0 }}>
+            <span style={{ color: '#4da6ff', fontWeight: 600 }}>AI Intern</span> @ Volza
+          </h3>
+          <ul style={{ fontSize: '1rem', lineHeight: 1.6, paddingLeft: '1.2rem', margin: '1rem 0' }}>
+            <li>Built a structured parsing system with Qwen-1.5B + llama.cpp for fast JSON extraction</li>
+            <li>Achieved 94% field accuracy using a lightweight, prompt-engineered LLM pipeline</li>
+          </ul>
+          <p style={{ fontSize: '0.9rem', color: '#999' }}>Aug 2025 – Present · Remote</p>
         </SpotlightCard>
 
-        <SpotlightCard spotlightColor="rgba(0, 229, 255, 0.2)">
-          <h3 style={{ fontSize: '1.6rem', margin: 0 }}><span style={{ color: '#00aaff', fontWeight: 600 }}>Web Development Intern</span> @ MSU Student Life & Engagement</h3>
-          <p style={{ fontSize: '1rem', opacity: 0.9, lineHeight: 1.6 }}>
-            Developed backend features, RESTful APIs, and custom Drupal modules to optimize internal web/database applications, reducing manual processing time by 30%. Resolved 50+ technical issues and implemented UI/UX improvements across projects.
-          </p>
+        <SpotlightCard spotlightColor="rgba(104, 104, 255, 0.83)">
+          <h3 style={{ fontSize: '1.6rem', margin: 0 }}>
+            <span style={{ color: '#4da6ff', fontWeight: 600 }}>Web Development Intern</span> @ MSU Student Life & Engagement
+          </h3>
+          <ul style={{ fontSize: '1rem', lineHeight: 1.6, paddingLeft: '1.2rem', margin: '1rem 0' }}>
+            <li>Automated backend content migration for 20+ Drupal sites, saving 100+ hours</li>
+            <li>Resolved 50+ backend issues, improving platform stability for 30,000+ users</li>
+            <li>Built dynamic service request modules with PHP and MySQL</li>
+          </ul>
           <p style={{ fontSize: '0.9rem', color: '#999' }}>May 2025 – Present · East Lansing, MI</p>
         </SpotlightCard>
 
-        <SpotlightCard spotlightColor="rgba(0, 229, 255, 0.2)">
-          <h3 style={{ fontSize: '1.6rem', margin: 0 }}><span style={{ color: '#00aaff', fontWeight: 600 }}>Resident Assistant</span> @ Michigan State University</h3>
-          <p style={{ fontSize: '1rem', opacity: 0.9, lineHeight: 1.6 }}>
-            Fostered a welcoming and inclusive environment through conflict resolution and community-building events. Served as the main support point for 40+ residents’ academic and personal needs.
-          </p>
+        <SpotlightCard spotlightColor="rgba(104, 104, 255, 0.83)">
+          <h3 style={{ fontSize: '1.6rem', margin: 0 }}>
+            <span style={{ color: '#4da6ff', fontWeight: 600 }}>Resident Assistant</span> @ Michigan State University
+          </h3>
+          <ul style={{ fontSize: '1rem', lineHeight: 1.6, paddingLeft: '1.2rem', margin: '1rem 0' }}>
+            <li>Built inclusive communities and hosted conflict-resolution and bonding events</li>
+            <li>Supported 40+ residents’ academic and wellness needs</li>
+          </ul>
           <p style={{ fontSize: '0.9rem', color: '#999' }}>Jan 2025 – Present · East Lansing, MI</p>
         </SpotlightCard>
 
-        <SpotlightCard spotlightColor="rgba(0, 229, 255, 0.2)">
-          <h3 style={{ fontSize: '1.6rem', margin: 0 }}><span style={{ color: '#00aaff', fontWeight: 600 }}>Undergraduate Learning Assistant</span> - CSE231 @ MSU</h3>
-          <p style={{ fontSize: '1rem', opacity: 0.9, lineHeight: 1.6 }}>
-            Mentored students in Python programming, leading weekly labs and office hours. Helped students debug, understand conditionals, loops, functions, and basic data structures.
-          </p>
+        <SpotlightCard spotlightColor="rgba(104, 104, 255, 0.83)">
+          <h3 style={{ fontSize: '1.6rem', margin: 0 }}>
+            <span style={{ color: '#4da6ff', fontWeight: 600 }}>Undergraduate Learning Assistant</span> - CSE231 @ MSU
+          </h3>
+          <ul style={{ fontSize: '1rem', lineHeight: 1.6, paddingLeft: '1.2rem', margin: '1rem 0' }}>
+            <li>Mentored 100+ students weekly through debugging help and Python labs</li>
+            <li>Led coding sessions on loops, OOP, and conditionals for 500+ students</li>
+          </ul>
           <p style={{ fontSize: '0.9rem', color: '#999' }}>Jan 2025 – Present · East Lansing, MI</p>
         </SpotlightCard>
 
-        <SpotlightCard spotlightColor="rgba(0, 229, 255, 0.2)">
-          <h3 style={{ fontSize: '1.6rem', margin: 0 }}><span style={{ color: '#00aaff', fontWeight: 600 }}>Professorial Research Assistant</span> @ MSU College of Engineering</h3>
-          <p style={{ fontSize: '1rem', opacity: 0.9, lineHeight: 1.6 }}>
-            Engineered a visualization tool using JavaScript to analyze climate extremes from 1979–2070. Enabled robust predictive insights on spatiotemporal datasets for large-scale climate analysis using time series algorithms.
-          </p>
-          <p style={{ fontSize: '0.9rem', color: '#999' }}>Aug 2023 – Present · East Lansing, MI</p>
+        <SpotlightCard spotlightColor="rgba(104, 104, 255, 0.83)">
+          <h3 style={{ fontSize: '1.6rem', margin: 0 }}>
+            <span style={{ color: '#4da6ff', fontWeight: 600 }}>Professorial Research Assistant</span> @ MSU College of Engineering
+          </h3>
+          <ul style={{ fontSize: '1rem', lineHeight: 1.6, paddingLeft: '1.2rem', margin: '1rem 0' }}>
+            <li>Trained LSTM models on climate block maxima data (2025–2100)</li>
+            <li>Built dashboards for model interpretability and time series analysis</li>
+            <li>Cut storage size by 60% and sped up forecasting pipelines</li>
+          </ul>
+          <p style={{ fontSize: '0.9rem', color: '#999' }}>Sep 2023 – Present · East Lansing, MI</p>
         </SpotlightCard>
       </div>
     </div>

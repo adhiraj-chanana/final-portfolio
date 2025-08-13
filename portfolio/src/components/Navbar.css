@@ -1,8 +1,6 @@
-/* Navbar.css */
-
 .navbar {
     width: 100%;
-    padding: 1rem 2.5rem;
+    padding: 1.8rem 3rem; /* increased padding */
     background: transparent;
     display: flex;
     justify-content: center;
@@ -17,24 +15,20 @@
   .nav-links {
     list-style: none;
     display: flex;
-    gap: 2.5rem;
+    gap: 3rem; /* slightly larger gap */
     align-items: center;
     margin: 0;
     padding: 0;
   }
   
   .nav-links li {
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 1.2rem; /* increased size */
+    font-weight: 600;
     font-family: 'Inter', sans-serif;
     transition: transform 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .nav-links li:hover {
-    transform: translateY(-2px);
   }
   
   .nav-links li a {
@@ -43,37 +37,6 @@
     display: inline-flex;
     align-items: center;
     transition: color 0.3s ease;
-    font-size: 1.1rem;
-  }
-  
-  .nav-links li a:hover {
-    color: #00bfff;
-  }
-  
-  .nav-icon-only {
-    font-size: 1.4rem;
-    color: #e0e0e0;
-    transition: color 0.3s ease;
-  }
-  
-  .nav-icon-only:hover {
-    color: #00bfff;
-  }
-  
-  @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column;
-      padding: 0.8rem;
-    }
-  
-    .nav-links {
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-    }
-  
-    .nav-links li {
-      font-size: 0.95rem;
-    }
+    font-size: 1.25rem; /* increased link size */
   }
   

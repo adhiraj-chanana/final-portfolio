@@ -9,9 +9,8 @@ const Navbar = () => {
         <li><a href="#home">Home</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
         <li><a href="https://github.com/adhiraj-chanana" target="_blank" rel="noopener noreferrer"><FaGithub /> </a></li>
-        <li><a href="https://leetcode.com/adhiraj_chanana/" target="_blank" rel="noopener noreferrer"><FaCode /> </a></li>
+        <li><a href="https://leetcode.com/u/73czutWcnN/" target="_blank" rel="noopener noreferrer"><FaCode /> </a></li>
         <li><a href="https://linkedin.com/in/adhiraj-chanana" target="_blank" rel="noopener noreferrer"><FaLinkedin /> </a></li>
       </ul>
     </nav>

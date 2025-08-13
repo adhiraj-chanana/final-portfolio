@@ -4,31 +4,38 @@ import spotifyImage from '../assets/spotify.png';
 import snippetImage from '../assets/snippet.png';
 import DecryptedText from './DecryptedText';
 
+// ✅ Add a link per project (shown only if provided)
 const projects = [
   {
     title: 'Repright',
     description: 'AI-powered app that tracks your workout form in real-time to prevent injury and improve performance.',
     image: reprightImage,
-    badge: '🏋️‍♂️ Computer Vision'
+    badge: '🏋️‍♂️ Computer Vision',
+    link: 'https://github.com/Rep-Right/exercise-recommender',
+    linkLabel: 'View Repo'
   },
   {
-    title: 'Tinder for Spotify',
+    title: 'SwipeTrack',
     description: 'Swipe-based app for music discovery, blending dating UX with Spotify’s song database.',
     image: spotifyImage,
-    badge: '🎵 Music Discovery'
+    badge: '🎵 Music Discovery',
+    link: 'https://github.com/adhiraj-chanana/songtinder',
+    linkLabel: 'Live Demo'
   },
   {
     title: 'SnippetShare',
     description: 'Modern snippet manager to save, search, and share reusable code across projects.',
     image: snippetImage,
-    badge: '💻 Dev Tool'
+    badge: '💻 Dev Tool',
+    link: 'https://marketplace.visualstudio.com/items?itemName=snippetsharedev.snippet-share&ssr=false#overview',
+    linkLabel: 'View Repo'
   }
 ];
 
 function Projects() {
   return (
     <section
-        id="projects"
+      id="projects"
       style={{
         padding: '4rem 2rem',
         background: '#0d0d0d',
@@ -37,7 +44,6 @@ function Projects() {
         color: '#fff',
       }}
     >
-
       <h2 style={{ fontSize: '2.5rem', marginBottom: '3rem', textAlign: 'center' }}>
         My Projects
       </h2>
@@ -63,8 +69,11 @@ function Projects() {
               backgroundColor: '#1a1a1a',
               position: 'relative',
               border: '2px solid #2a2a2a',
-              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)'
+              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
+              transition: 'transform 220ms ease, box-shadow 220ms ease',
             }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(0,0,0,0.45)'; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)'; }}
           >
             <img
               src={proj.image}
@@ -84,14 +93,75 @@ function Projects() {
               <h3 style={{ fontSize: '1.7rem', marginBottom: '0.7rem', color: '#fff' }}>
                 <DecryptedText text={proj.title} speed={60} maxIterations={15} characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890" />
               </h3>
-              <DecryptedText
-                text={proj.description}
-                speed={80}
-                maxIterations={20}
-                characters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
-                animateOn="view"
-                revealDirection="center"
-              />
+
+              <div style={{ marginBottom: '1.25rem', lineHeight: 1.6 }}>
+                <DecryptedText
+                  text={proj.description}
+                  speed={80}
+                  maxIterations={20}
+                  characters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+                  animateOn="view"
+                  revealDirection="center"
+                />
+              </div>
+
+              {/* CTA Area */}
+              {proj.link && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <a
+                    href={proj.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${proj.linkLabel || 'Open'}: ${proj.title}`}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                      padding: '0.8rem 1.1rem',
+                      borderRadius: '9999px',
+                      fontSize: '0.95rem',
+                      fontWeight: 600,
+                      background: 'linear-gradient(135deg, #6ee7ff 0%, #a78bfa 50%, #ff8bd5 100%)',
+                      color: '#0b0b0b',
+                      textDecoration: 'none',
+                      boxShadow: '0 6px 18px rgba(167, 139, 250, 0.35)',
+                      transition: 'filter 160ms ease, transform 160ms ease',
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.filter = 'brightness(1.05)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.filter = 'brightness(1.0)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                    onFocus={e => { e.currentTarget.style.outline = '2px solid #a78bfa'; e.currentTarget.style.outlineOffset = '3px'; }}
+                    onBlur={e => { e.currentTarget.style.outline = 'none'; e.currentTarget.style.outlineOffset = '0px'; }}
+                  >
+                    {proj.linkLabel || 'Open'}
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M14 3h7v7" stroke="#0b0b0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M21 3l-9 9" stroke="#0b0b0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M12 7H7a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4v-5" stroke="#0b0b0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </a>
+
+                  {/* Optional secondary action: copy link */}
+                  <button
+                    type="button"
+                    aria-label={`Copy link to ${proj.title}`}
+                    onClick={() => navigator.clipboard?.writeText(proj.link)}
+                    style={{
+                      padding: '0.7rem 1rem',
+                      borderRadius: '9999px',
+                      backgroundColor: 'transparent',
+                      border: '1px solid #3a3a3a',
+                      color: '#fff',
+                      fontSize: '0.9rem',
+                      cursor: 'pointer',
+                      transition: 'background-color 160ms ease, border-color 160ms ease',
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#2e2e2e'; e.currentTarget.style.borderColor = '#5a5a5a'; }}
+                    onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.borderColor = '#3a3a3a'; }}
+                  >
+                    Copy Link
+                  </button>
+                </div>
+              )}
             </div>
 
             <div
