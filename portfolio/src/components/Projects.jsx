@@ -1,11 +1,28 @@
 import React from 'react';
 import reprightImage from '../assets/repright.png';
-import spotifyImage from '../assets/spotify.png';
 import snippetImage from '../assets/snippet.png';
+import webhookImage from '../assets/webhook.png';
+import pitchrankImage from '../assets/pitchrank.png';
 import DecryptedText from './DecryptedText';
 
 // ✅ Add a link per project (shown only if provided)
 const projects = [
+  {
+    title: 'AI Webhook Processor',
+    description: 'An AI-powered webhook processing pipeline with intelligent LLM-based routing, a built-in evaluation framework, and a live monitoring dashboard.',
+    image: webhookImage,
+    badge: '🤖 AI Pipeline',
+    link: 'https://webhook-ai-two.vercel.app/',
+    linkLabel: 'Live Demo'
+  },
+  {
+    title: 'PitchRank',
+    description: 'A daily pitch-training app that builds a practice streak, with AI-driven scoring of each pitch and a "boss character" feedback system for gamified critique.',
+    image: pitchrankImage,
+    badge: '🎤 AI Coaching',
+    link: 'https://pitchrank-wnal.vercel.app/',
+    linkLabel: 'Live Demo'
+  },
   {
     title: 'Repright',
     description: 'AI-powered app that tracks your workout form in real-time to prevent injury and improve performance.',
@@ -13,14 +30,6 @@ const projects = [
     badge: '🏋️‍♂️ Computer Vision',
     link: 'https://github.com/Rep-Right/exercise-recommender',
     linkLabel: 'View Repo'
-  },
-  {
-    title: 'SwipeTrack',
-    description: 'Swipe-based app for music discovery, blending dating UX with Spotify’s song database.',
-    image: spotifyImage,
-    badge: '🎵 Music Discovery',
-    link: 'https://github.com/adhiraj-chanana/songtinder',
-    linkLabel: 'Live Demo'
   },
   {
     title: 'SnippetShare',

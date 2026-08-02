@@ -1,15 +1,25 @@
 .card-spotlight {
     position: relative;
-    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 1.75rem;
     border: 1px solid #222;
     background-color: #111;
     padding: 2rem;
     overflow: hidden;
+    transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
     --mouse-x: 50%;
     --mouse-y: 50%;
     --spotlight-color: rgba(255, 255, 255, 0.05);
   }
-  
+
+  .card-spotlight:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    border-color: #333;
+  }
+
   .card-spotlight::before {
     content: "";
     position: absolute;
