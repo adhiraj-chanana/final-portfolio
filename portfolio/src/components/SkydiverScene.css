@@ -27,9 +27,10 @@
 
 .skydiver-scene__figure {
   position: absolute;
-  top: 50%;
+  top: 46%;
   left: 50%;
-  width: 62%;
-  max-width: 220px;
+  width: 88%;
+  max-width: 340px;
+  height: auto;
   transform: translate(-50%, -50%);
 }
