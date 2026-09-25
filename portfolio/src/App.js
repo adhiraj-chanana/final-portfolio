@@ -1,4 +1,5 @@
 import React from "react";
+import { MotionConfig } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Experience from "./components/Experience";
@@ -7,12 +8,14 @@ import "./App.css";
 
 const App = () => {
   return (
-    <div className="app">
-      <Navbar />
-      <Home />
-      <Experience />
-      <Projects />
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div className="app">
+        <Navbar />
+        <Home />
+        <Experience />
+        <Projects />
+      </div>
+    </MotionConfig>
   );
 };
 

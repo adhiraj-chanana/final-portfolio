@@ -106,14 +106,7 @@ function Projects() {
               </h3>
 
               <p style={{ margin: '0 0 1.25rem', lineHeight: 1.6, color: 'var(--color-text-secondary)' }}>
-                <DecryptedText
-                  text={proj.description}
-                  speed={80}
-                  maxIterations={20}
-                  characters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
-                  animateOn="view"
-                  revealDirection="center"
-                />
+                {proj.description}
               </p>
 
               {proj.link && (
@@ -136,8 +129,16 @@ function Projects() {
                     boxShadow: '0 6px 18px rgba(94, 200, 255, 0.3)',
                     transition: 'filter 160ms ease, transform 160ms ease',
                   }}
-                  onMouseEnter={e => { e.currentTarget.style.filter = 'brightness(1.05)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                  onMouseEnter={e => {
+                    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+                    e.currentTarget.style.filter = 'brightness(1.05)';
+                    e.currentTarget.style.transform = 'translateY(-1px)';
+                  }}
                   onMouseLeave={e => { e.currentTarget.style.filter = 'brightness(1.0)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                  onMouseDown={e => { e.currentTarget.style.transition = 'transform 100ms cubic-bezier(0.23, 1, 0.32, 1)'; e.currentTarget.style.transform = 'scale(0.97)'; }}
+                  onMouseUp={e => { e.currentTarget.style.transition = 'filter 160ms ease, transform 160ms ease'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                  onTouchStart={e => { e.currentTarget.style.transition = 'transform 100ms cubic-bezier(0.23, 1, 0.32, 1)'; e.currentTarget.style.transform = 'scale(0.97)'; }}
+                  onTouchEnd={e => { e.currentTarget.style.transition = 'filter 160ms ease, transform 160ms ease'; e.currentTarget.style.transform = 'translateY(0)'; }}
                   onFocus={e => { e.currentTarget.style.outline = '2px solid var(--color-accent)'; e.currentTarget.style.outlineOffset = '3px'; }}
                   onBlur={e => { e.currentTarget.style.outline = 'none'; e.currentTarget.style.outlineOffset = '0px'; }}
                 >
