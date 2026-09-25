@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "instrument serif",
+        "createdAt": "2026-09-25T15:56:26.989Z",
+        "reason": "Claude determined: false positive, not a substring/fuzzy match to any listed overused font (Inter/Roboto/Fraunces/Geist/Plus Jakarta Sans/Space Grotesk); deliberately chosen distinctive display face, documented in the typeset commit (cc1f1e6)"
+      }
+    ]
+  }
+}
