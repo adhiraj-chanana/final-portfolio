@@ -32,11 +32,21 @@
   }
   
   .nav-links li a {
-    color: #e0e0e0;
+    color: var(--color-text-secondary);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     transition: color 0.3s ease;
     font-size: 1.25rem; /* increased link size */
   }
-  
+
+  .nav-links li a:hover,
+  .nav-links li a:focus-visible {
+    color: var(--color-accent);
+  }
+
+  .nav-links li a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }

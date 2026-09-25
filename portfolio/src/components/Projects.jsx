@@ -47,10 +47,10 @@ function Projects() {
       id="projects"
       style={{
         padding: '4rem 2rem',
-        background: '#0d0d0d',
+        background: 'var(--color-canvas)',
         minHeight: '100vh',
         fontFamily: "'IBM Plex Sans', sans-serif",
-        color: '#fff',
+        color: 'var(--color-text)',
       }}
     >
       <h2 style={{ fontSize: '2.8rem', fontWeight: 400, marginBottom: '3rem', textAlign: 'center', fontFamily: "'Instrument Serif', Georgia, serif" }}>
@@ -75,9 +75,9 @@ function Projects() {
               maxWidth: '600px',
               borderRadius: '2rem',
               overflow: 'hidden',
-              backgroundColor: '#1a1a1a',
+              backgroundColor: 'var(--color-surface)',
               position: 'relative',
-              border: '2px solid #2a2a2a',
+              border: '1px solid var(--color-border)',
               boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
               transition: 'transform 220ms ease, box-shadow 220ms ease',
             }}
@@ -130,22 +130,22 @@ function Projects() {
                       borderRadius: '9999px',
                       fontSize: '0.95rem',
                       fontWeight: 600,
-                      background: 'linear-gradient(135deg, #6ee7ff 0%, #a78bfa 50%, #ff8bd5 100%)',
-                      color: '#0b0b0b',
+                      background: 'var(--color-accent)',
+                      color: 'var(--color-accent-text)',
                       textDecoration: 'none',
-                      boxShadow: '0 6px 18px rgba(167, 139, 250, 0.35)',
+                      boxShadow: '0 6px 18px rgba(94, 200, 255, 0.3)',
                       transition: 'filter 160ms ease, transform 160ms ease',
                     }}
                     onMouseEnter={e => { e.currentTarget.style.filter = 'brightness(1.05)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
                     onMouseLeave={e => { e.currentTarget.style.filter = 'brightness(1.0)'; e.currentTarget.style.transform = 'translateY(0)'; }}
-                    onFocus={e => { e.currentTarget.style.outline = '2px solid #a78bfa'; e.currentTarget.style.outlineOffset = '3px'; }}
+                    onFocus={e => { e.currentTarget.style.outline = '2px solid var(--color-accent)'; e.currentTarget.style.outlineOffset = '3px'; }}
                     onBlur={e => { e.currentTarget.style.outline = 'none'; e.currentTarget.style.outlineOffset = '0px'; }}
                   >
                     {proj.linkLabel || 'Open'}
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                      <path d="M14 3h7v7" stroke="#0b0b0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M21 3l-9 9" stroke="#0b0b0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M12 7H7a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4v-5" stroke="#0b0b0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M14 3h7v7" stroke="var(--color-accent-text)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M21 3l-9 9" stroke="var(--color-accent-text)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M12 7H7a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4v-5" stroke="var(--color-accent-text)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </a>
 

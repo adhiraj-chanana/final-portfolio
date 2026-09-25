@@ -85,26 +85,27 @@
   }
 
   .hero-cta-primary {
-    background: #eaf6ff;
-    color: #0b0b0b;
+    background: var(--color-accent);
+    color: var(--color-accent-text);
   }
 
   .hero-cta-primary:hover {
-    background: #ffffff;
+    background: var(--color-accent-strong);
   }
 
   .hero-cta-secondary {
     background: transparent;
-    color: #fff;
-    border: 1px solid #3a3a3a;
+    color: var(--color-text);
+    border: 1px solid var(--color-border-strong);
   }
 
   .hero-cta-secondary:hover {
-    border-color: #6b6b6b;
+    border-color: var(--color-accent);
+    color: var(--color-accent);
   }
 
   .hero-cta:focus-visible {
-    outline: 2px solid #6ee7ff;
+    outline: 2px solid var(--color-accent);
     outline-offset: 3px;
   }
 
