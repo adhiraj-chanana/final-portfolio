@@ -155,8 +155,8 @@ const chipStyle = {
 
 const Experience = () => {
   return (
-    <section id="experience" aria-label="Experience" style={{ background: 'var(--color-canvas)', minHeight: '100svh', padding: '5rem 1rem', color: 'var(--color-text)' }}>
-      <h2 style={{ textAlign: 'center', fontSize: '2.8rem', marginBottom: '3rem', fontWeight: 400, fontFamily: "'Instrument Serif', Georgia, serif" }}>
+    <section id="experience" aria-labelledby="experience-heading" style={{ background: 'var(--color-canvas)', minHeight: '100svh', padding: '5rem 2rem', color: 'var(--color-text)' }}>
+      <h2 id="experience-heading" style={{ textAlign: 'center', fontSize: '2.8rem', marginBottom: '3rem', fontWeight: 400, fontFamily: "'Instrument Serif', Georgia, serif" }}>
         Experience
       </h2>
       <motion.div

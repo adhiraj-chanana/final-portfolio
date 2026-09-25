@@ -44,15 +44,16 @@ function Projects() {
   return (
     <section
       id="projects"
+      aria-labelledby="projects-heading"
       style={{
-        padding: '4rem 2rem',
+        padding: '5rem 2rem',
         background: 'var(--color-canvas)',
         minHeight: '100svh',
         fontFamily: "'IBM Plex Sans', sans-serif",
         color: 'var(--color-text)',
       }}
     >
-      <h2 style={{ fontSize: '2.8rem', fontWeight: 400, marginBottom: '3rem', textAlign: 'center', fontFamily: "'Instrument Serif', Georgia, serif" }}>
+      <h2 id="projects-heading" style={{ fontSize: '2.8rem', fontWeight: 400, marginBottom: '3rem', textAlign: 'center', fontFamily: "'Instrument Serif', Georgia, serif" }}>
         My Projects
       </h2>
 
