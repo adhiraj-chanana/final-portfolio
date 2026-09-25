@@ -1,0 +1,115 @@
+.education-section {
+  background: var(--color-canvas);
+  padding: 5rem 2rem;
+  color: var(--color-text);
+}
+
+.education-heading {
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-family: 'Archivo', sans-serif;
+  margin: 0 0 3rem;
+}
+
+.education-panel {
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.education-school {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: 2.1rem;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin: 0 0 1.5rem;
+}
+
+.education-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.education-degree-title {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.education-minors {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0.5rem 0 0;
+  max-width: 26rem;
+}
+
+.education-gpa {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.education-gpa-number {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: 3rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-accent);
+}
+
+.education-gpa-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+
+.education-divider {
+  height: 1px;
+  background: var(--color-border);
+  margin-bottom: 1.5rem;
+}
+
+.education-dates {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .education-school {
+    font-size: 1.6rem;
+  }
+
+  .education-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .education-gpa {
+    align-items: flex-start;
+  }
+
+  .education-gpa-number {
+    font-size: 2.5rem;
+  }
+}
