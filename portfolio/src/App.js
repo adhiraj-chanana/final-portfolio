@@ -4,7 +4,8 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
 import Education from "./components/Education";
-import Experience from "./components/Experience";
+import TechnicalExperience from "./components/TechnicalExperience";
+import CampusInvolvement from "./components/CampusInvolvement";
 import Projects from "./components/Projects";
 import "./App.css";
 
@@ -17,7 +18,8 @@ const App = () => {
           <Home />
           <About />
           <Education />
-          <Experience />
+          <TechnicalExperience />
+          <CampusInvolvement />
           <Projects />
         </main>
       </div>

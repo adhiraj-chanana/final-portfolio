@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import SpotlightCard from './SpotlightCard';
 
@@ -17,83 +16,6 @@ const cardVariants = {
     transition: { duration: 0.3, ease: [0.23, 1, 0.32, 1] }
   }
 };
-
-const experiences = [
-  {
-    role: 'Application Developer Intern',
-    company: 'Delta Dental',
-    current: true,
-    date: 'Jan 2026 – Present',
-    location: 'Okemos, MI',
-    accent: 'rgba(94, 200, 255, 0.35)',
-    bullets: [
-      'Built Angular front-end features integrated with Java REST APIs for a secure, SOA-compliant platform serving 5000+ users',
-      'Led cross-functional feature delivery, cutting time-to-market 25% and stakeholder revision cycles 30%'
-    ]
-  },
-  {
-    role: 'AI Intern',
-    company: 'Volza',
-    current: false,
-    date: 'Aug 2025 – Dec 2025',
-    location: 'Remote',
-    accent: 'rgba(94, 200, 255, 0.35)',
-    bullets: [
-      'Built a structured parsing system with Qwen-1.5B + llama.cpp for fast JSON extraction',
-      'Achieved 94% field accuracy using a lightweight, prompt-engineered LLM pipeline'
-    ]
-  },
-  {
-    role: 'Web Development Intern',
-    company: 'MSU Student Life & Engagement',
-    current: false,
-    date: 'May 2025 – Dec 2025',
-    location: 'East Lansing, MI',
-    accent: 'rgba(94, 200, 255, 0.2)',
-    bullets: [
-      'Automated backend content migration for 20+ Drupal sites, saving 100+ hours',
-      'Resolved 50+ backend issues, improving platform stability for 30,000+ users',
-      'Built dynamic service request modules with PHP and MySQL'
-    ]
-  },
-  {
-    role: 'Resident Assistant',
-    company: 'Michigan State University',
-    current: true,
-    date: 'Jan 2025 – Present',
-    location: 'East Lansing, MI',
-    accent: 'rgba(94, 200, 255, 0.35)',
-    bullets: [
-      'Built inclusive communities and hosted conflict-resolution and bonding events',
-      'Supported 40+ residents’ academic and wellness needs'
-    ]
-  },
-  {
-    role: 'Undergraduate Learning Assistant · CSE231',
-    company: 'Michigan State University',
-    current: false,
-    date: 'Jan 2025 – May 2025',
-    location: 'East Lansing, MI',
-    accent: 'rgba(94, 200, 255, 0.2)',
-    bullets: [
-      'Mentored 100+ students weekly through debugging help and Python labs',
-      'Led coding sessions on loops, OOP, and conditionals for 500+ students'
-    ]
-  },
-  {
-    role: 'Professorial Research Assistant',
-    company: 'MSU College of Engineering',
-    current: false,
-    date: 'Sep 2023 – May 2025',
-    location: 'East Lansing, MI',
-    accent: 'rgba(94, 200, 255, 0.2)',
-    bullets: [
-      'Trained LSTM models on climate block maxima data (2025–2100)',
-      'Built dashboards for model interpretability and time series analysis',
-      'Cut storage size by 60% and sped up forecasting pipelines'
-    ]
-  }
-];
 
 const getInitials = (name) => {
   const words = name.split(/\s+/).filter(Boolean);
@@ -153,11 +75,19 @@ const chipStyle = {
   color: 'var(--color-text-secondary)'
 };
 
-const Experience = () => {
+/**
+ * Renders a heading + a staggered grid of role cards. Purely presentational --
+ * the role data comes entirely from the `experiences` prop, so this same
+ * component drives both Technical Experience and Campus Involvement &
+ * Leadership with no duplicated markup between them.
+ */
+const ExperienceSection = ({ id, heading, experiences }) => {
+  const headingId = `${id}-heading`;
+
   return (
-    <section id="experience" aria-labelledby="experience-heading" style={{ background: 'var(--color-canvas)', minHeight: '100svh', padding: '5rem 2rem', color: 'var(--color-text)' }}>
-      <h2 id="experience-heading" style={{ textAlign: 'center', fontSize: '2.8rem', marginBottom: '3rem', fontWeight: 800, letterSpacing: '-0.02em', fontFamily: "'Archivo', sans-serif" }}>
-        Experience
+    <section id={id} aria-labelledby={headingId} style={{ background: 'var(--color-canvas)', minHeight: '100svh', padding: '5rem 2rem', color: 'var(--color-text)' }}>
+      <h2 id={headingId} style={{ textAlign: 'center', fontSize: '2.8rem', marginBottom: '3rem', fontWeight: 800, letterSpacing: '-0.02em', fontFamily: "'Archivo', sans-serif" }}>
+        {heading}
       </h2>
       <motion.div
         style={{
@@ -217,4 +147,4 @@ const Experience = () => {
   );
 };
 
-export default Experience;
+export default ExperienceSection;
