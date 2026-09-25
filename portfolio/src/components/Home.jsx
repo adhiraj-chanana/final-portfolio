@@ -16,9 +16,6 @@ const Home = () => {
         <h1 className="hero-name fade-in">
           Adhiraj Chanana
         </h1>
-        <p className="hero-subhead fade-in">
-          Full-stack engineer building AI/LLM products — CS @ Michigan State, Fall 2027
-        </p>
         <TextType
           text={[
             "I'm an Aspiring SWE",
