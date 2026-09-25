@@ -16,6 +16,9 @@ const Home = () => {
         <h1 className="hero-name fade-in">
           Adhiraj Chanana
         </h1>
+        <p className="hero-subhead fade-in">
+          Full-stack engineer building AI/LLM products — CS @ Michigan State, Fall 2027
+        </p>
         <TextType
           text={[
             "I'm an Aspiring SWE",
@@ -29,6 +32,17 @@ const Home = () => {
           cursorCharacter="|"
           className="text-large enhanced-text fade-in-delay"
         />
+        <div className="hero-cta-row fade-in-delay">
+          <a
+            className="hero-cta hero-cta-primary"
+            href="mailto:adhirajmohanchanana@gmail.com"
+          >
+            Email Me
+          </a>
+          <a className="hero-cta hero-cta-secondary" href="#projects">
+            View Projects
+          </a>
+        </div>
       </div>
     </section>
   );
