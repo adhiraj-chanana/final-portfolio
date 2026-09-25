@@ -14,12 +14,6 @@
     --spotlight-color: rgba(255, 255, 255, 0.05);
   }
 
-  .card-spotlight:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-    border-color: var(--color-border-strong);
-  }
-
   .card-spotlight::before {
     content: "";
     position: absolute;
@@ -32,9 +26,19 @@
     transition: opacity 0.5s ease;
     pointer-events: none;
   }
-  
-  .card-spotlight:hover::before,
+
   .card-spotlight:focus-within::before {
     opacity: 0.6;
   }
-  
+
+  @media (hover: hover) and (pointer: fine) {
+    .card-spotlight:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+      border-color: var(--color-border-strong);
+    }
+
+    .card-spotlight:hover::before {
+      opacity: 0.6;
+    }
+  }

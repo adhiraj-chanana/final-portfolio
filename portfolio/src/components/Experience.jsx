@@ -155,7 +155,7 @@ const chipStyle = {
 
 const Experience = () => {
   return (
-    <div id="experience" style={{ background: 'var(--color-canvas)', minHeight: '100vh', padding: '5rem 1rem', color: 'var(--color-text)' }}>
+    <div id="experience" style={{ background: 'var(--color-canvas)', minHeight: '100svh', padding: '5rem 1rem', color: 'var(--color-text)' }}>
       <h2 style={{ textAlign: 'center', fontSize: '2.8rem', marginBottom: '3rem', fontWeight: 400, fontFamily: "'Instrument Serif', Georgia, serif" }}>
         Experience
       </h2>

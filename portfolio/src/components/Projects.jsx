@@ -47,7 +47,7 @@ function Projects() {
       style={{
         padding: '4rem 2rem',
         background: 'var(--color-canvas)',
-        minHeight: '100vh',
+        minHeight: '100svh',
         fontFamily: "'IBM Plex Sans', sans-serif",
         color: 'var(--color-text)',
       }}
@@ -79,7 +79,11 @@ function Projects() {
               boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
               transition: 'transform 220ms ease, box-shadow 220ms ease',
             }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(0,0,0,0.45)'; }}
+            onMouseEnter={e => {
+              if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+              e.currentTarget.style.transform = 'translateY(-4px)';
+              e.currentTarget.style.boxShadow = '0 16px 40px rgba(0,0,0,0.45)';
+            }}
             onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)'; }}
           >
             <img
@@ -118,7 +122,9 @@ function Projects() {
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
+                    justifyContent: 'center',
                     gap: '0.5rem',
+                    minHeight: '44px',
                     padding: '0.8rem 1.1rem',
                     borderRadius: '9999px',
                     fontSize: '0.95rem',
