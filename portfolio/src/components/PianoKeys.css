@@ -1,0 +1,34 @@
+.piano-keys {
+  width: 100%;
+  max-width: 220px;
+  margin: 0 auto 1rem;
+}
+
+.piano-keys__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.piano-keys__white {
+  fill: var(--color-text);
+  stroke: var(--color-border);
+  stroke-width: 1;
+  transition: fill 120ms ease;
+}
+
+.piano-keys__black {
+  fill: var(--color-accent-text);
+  transition: fill 120ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .piano-keys__white:hover {
+    fill: var(--color-accent);
+  }
+
+  .piano-keys__black:hover {
+    fill: var(--color-accent);
+  }
+}

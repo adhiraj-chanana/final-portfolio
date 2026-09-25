@@ -22,3 +22,65 @@
   padding: 2.5rem 1.75rem 1.75rem;
   background: linear-gradient(to top, var(--color-surface) 40%, transparent);
 }
+
+/* Bio and Skydiving are the two visual anchors -- a bigger heading than
+   the rest of the grid to carry that weight. */
+.about-anchor-heading {
+  font-size: 1.6rem;
+}
+
+.about-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: gap 160ms ease;
+}
+
+.about-link span {
+  transition: transform 160ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .about-link:hover span {
+    transform: translateX(3px);
+  }
+}
+
+.about-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Football and Michigan State each get one tasteful, card-scoped accent
+   color per request -- the global palette (border-glow, backgrounds, body
+   text) stays untouched everywhere else. */
+.about-football-heading {
+  color: #e3bb62;
+}
+
+.about-football-badge {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 0.25rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(227, 187, 98, 0.4);
+  background: rgba(227, 187, 98, 0.1);
+  color: #e3bb62;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.about-msu-heading {
+  color: #3ecf8e;
+}
