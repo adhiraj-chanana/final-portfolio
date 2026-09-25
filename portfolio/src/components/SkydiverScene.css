@@ -1,0 +1,26 @@
+.skydiver-scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.skydiver-scene__streak {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 46px;
+  border-radius: 999px;
+  background: linear-gradient(to bottom, transparent, rgba(94, 200, 255, 0.7));
+  transform: rotate(18deg);
+  opacity: 0;
+}
+
+.skydiver-scene__figure {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 46%;
+  max-width: 150px;
+  transform: translate(-50%, -50%);
+}

@@ -1,0 +1,24 @@
+.about-section {
+  background: var(--color-canvas);
+  padding: 5rem 2rem;
+  color: var(--color-text);
+}
+
+.about-heading {
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-family: 'Archivo', sans-serif;
+  margin: 0 0 3rem;
+}
+
+/* Scrim behind the skydiving card's text so it stays legible over the
+   animated streaks, without needing a flat background that would hide
+   the animation entirely. */
+.magic-bento-card__content--scrim {
+  margin: -1.75rem;
+  margin-top: auto;
+  padding: 2.5rem 1.75rem 1.75rem;
+  background: linear-gradient(to top, var(--color-surface) 40%, transparent);
+}
