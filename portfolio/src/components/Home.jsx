@@ -18,10 +18,9 @@ const Home = () => {
         </h1>
         <TextType
           text={[
-            "I'm an Aspiring SWE",
-            "Currently developing in AI, ML, and Backend",
-            "Always exploring new ideas",
-            "Feel free to connect"
+            "I love building things.",
+            "I try not to break production. (No promises.)",
+            "I automate anything I have to do twice."
           ]}
           typingSpeed={65}
           pauseDuration={1500}
