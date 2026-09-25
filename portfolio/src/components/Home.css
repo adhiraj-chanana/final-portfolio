@@ -25,13 +25,11 @@
   }
   
   .hero-name {
-    font-size: 4rem;
-    font-weight: 800;
-    background: linear-gradient(90deg, #00bfff, #00e5ff, #00bfff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
-    font-family: 'Poppins', 'Segoe UI', 'Inter', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: #fff;
+    font-family: 'Instrument Serif', Georgia, serif;
     margin-bottom: 1.4rem;
     transition: transform 0.4s ease;
   }
@@ -43,9 +41,9 @@
   .text-large.enhanced-text {
     font-size: 1.8rem;
     font-weight: 500;
-    font-family: 'Inter', 'Segoe UI', sans-serif;
+    letter-spacing: -0.01em;
+    font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
     color: #d0eaff;
-    text-shadow: 0 0 12px rgba(0, 191, 255, 0.2);
     transition: opacity 0.5s ease-in-out;
   }
   

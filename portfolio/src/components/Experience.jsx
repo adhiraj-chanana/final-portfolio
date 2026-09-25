@@ -104,7 +104,8 @@ const avatarStyle = {
 const pillBaseStyle = {
   flexShrink: 0,
   fontSize: '0.68rem',
-  fontWeight: 700,
+  fontWeight: 500,
+  fontFamily: "'IBM Plex Mono', monospace",
   letterSpacing: '0.05em',
   textTransform: 'uppercase',
   padding: '0.35rem 0.75rem',
@@ -133,13 +134,14 @@ const chipStyle = {
   borderRadius: '9999px',
   padding: '0.35rem 0.75rem',
   fontSize: '0.8rem',
+  fontFamily: "'IBM Plex Mono', monospace",
   color: '#bbb'
 };
 
 const Experience = () => {
   return (
     <div id="experience" style={{ background: '#0d0d0d', minHeight: '100vh', padding: '5rem 1rem', color: '#fff' }}>
-      <h2 style={{ textAlign: 'center', fontSize: '2.8rem', marginBottom: '3rem', fontFamily: 'Inter, sans-serif' }}>
+      <h2 style={{ textAlign: 'center', fontSize: '2.8rem', marginBottom: '3rem', fontWeight: 400, fontFamily: "'Instrument Serif', Georgia, serif" }}>
         Experience
       </h2>
       <div
@@ -159,7 +161,7 @@ const Experience = () => {
               <div style={{ display: 'flex', gap: '0.9rem', alignItems: 'center' }}>
                 <div style={avatarStyle}>{getInitials(exp.company)}</div>
                 <div>
-                  <p style={{ margin: 0, fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#4da6ff' }}>
+                  <p style={{ margin: 0, fontSize: '0.72rem', fontWeight: 500, fontFamily: "'IBM Plex Mono', monospace", letterSpacing: '0.08em', textTransform: 'uppercase', color: '#4da6ff' }}>
                     {exp.company}
                   </p>
                   <h3 style={{ margin: '0.3rem 0 0', fontSize: '1.3rem', fontWeight: 700, color: '#fff', lineHeight: 1.3 }}>

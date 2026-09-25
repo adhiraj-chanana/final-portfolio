@@ -49,11 +49,11 @@ function Projects() {
         padding: '4rem 2rem',
         background: '#0d0d0d',
         minHeight: '100vh',
-        fontFamily: 'Inter, sans-serif',
+        fontFamily: "'IBM Plex Sans', sans-serif",
         color: '#fff',
       }}
     >
-      <h2 style={{ fontSize: '2.5rem', marginBottom: '3rem', textAlign: 'center' }}>
+      <h2 style={{ fontSize: '2.8rem', fontWeight: 400, marginBottom: '3rem', textAlign: 'center', fontFamily: "'Instrument Serif', Georgia, serif" }}>
         My Projects
       </h2>
 
