@@ -1,6 +1,12 @@
+import { useRef, useLayoutEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useReducedMotion } from 'framer-motion';
 import MagicBento from './MagicBento';
 import SkydiverScene from './SkydiverScene';
 import './About.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const cards = [
   {
@@ -48,9 +54,54 @@ const cards = [
   },
 ];
 
+/**
+ * This section's entrance is the site's one pinned/scrubbed signature moment
+ * (see Stage 6 brief: "one or two signature moments max"). The section pins
+ * for a short scroll distance while the six bento cards reveal in sequence,
+ * tied directly to scroll position (scrub) rather than time -- scrolling
+ * back up reverses it, which is the expected behavior for this pattern
+ * (distinct from the one-shot, non-reversing reveals used elsewhere on the
+ * site). transform/opacity only, so it stays on the GPU; ScrollTrigger's
+ * own pin-spacer handles reserving layout space, so nothing jumps.
+ */
 const About = () => {
+  const sectionRef = useRef(null);
+  const prefersReducedMotion = useReducedMotion();
+
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
+    if (!section || prefersReducedMotion) return;
+
+    const cardEls = section.querySelectorAll('.magic-bento-card');
+    if (!cardEls.length) return;
+
+    const ctx = gsap.context(() => {
+      gsap.set(cardEls, { opacity: 0, y: 40, scale: 0.94 });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: '+=60%',
+          pin: true,
+          scrub: 0.8,
+        },
+      });
+
+      tl.to(cardEls, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        stagger: 0.08,
+        ease: 'cubic-bezier(0.23, 1, 0.32, 1)',
+      });
+    }, section);
+
+    return () => ctx.revert();
+  }, [prefersReducedMotion]);
+
   return (
-    <section id="about" aria-labelledby="about-heading" className="about-section">
+    <section id="about" aria-labelledby="about-heading" className="about-section" ref={sectionRef}>
       <h2 id="about-heading" className="about-heading">
         About Me
       </h2>

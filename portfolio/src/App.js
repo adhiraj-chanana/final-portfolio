@@ -7,9 +7,12 @@ import Education from "./components/Education";
 import TechnicalExperience from "./components/TechnicalExperience";
 import CampusInvolvement from "./components/CampusInvolvement";
 import Projects from "./components/Projects";
+import { useSmoothScroll } from "./hooks/useSmoothScroll";
 import "./App.css";
 
 const App = () => {
+  useSmoothScroll();
+
   return (
     <MotionConfig reducedMotion="user">
       <div className="app">

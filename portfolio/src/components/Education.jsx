@@ -1,16 +1,21 @@
+import { useRef } from 'react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Education.css';
 
 const Education = () => {
+  const panelRef = useRef(null);
+  useScrollReveal(panelRef, { selector: '.reveal-item' });
+
   return (
     <section id="education" aria-labelledby="education-heading" className="education-section">
       <h2 id="education-heading" className="education-heading">
         Education
       </h2>
 
-      <div className="education-panel">
-        <p className="education-school">Michigan State University</p>
+      <div className="education-panel" ref={panelRef}>
+        <p className="education-school reveal-item">Michigan State University</p>
 
-        <div className="education-row">
+        <div className="education-row reveal-item">
           <div className="education-degree">
             <p className="education-degree-title">B.S. Computer Science</p>
             <p className="education-minors">
@@ -26,7 +31,7 @@ const Education = () => {
 
         <div className="education-divider" />
 
-        <p className="education-dates">August 2023 &ndash; Expected Fall 2027</p>
+        <p className="education-dates reveal-item">August 2023 &ndash; Expected Fall 2027</p>
       </div>
     </section>
   );

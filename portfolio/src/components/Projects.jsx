@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { gsap } from 'gsap';
 import reprightImage from '../assets/repright.jpg';
 import snippetImage from '../assets/snippet.jpg';
 import webhookImage from '../assets/webhook.jpg';
 import pitchrankImage from '../assets/pitchrank.jpg';
 import DecryptedText from './DecryptedText';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const projects = [
   {
@@ -41,6 +43,9 @@ const projects = [
 ];
 
 function Projects() {
+  const gridRef = useRef(null);
+  useScrollReveal(gridRef, { selector: '.project-card', y: 32 });
+
   return (
     <section
       id="projects"
@@ -58,6 +63,7 @@ function Projects() {
       </h2>
 
       <div
+        ref={gridRef}
         style={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -70,6 +76,7 @@ function Projects() {
         {projects.map((proj, idx) => (
           <div
             key={idx}
+            className="project-card"
             style={{
               flex: '1 1 480px',
               maxWidth: '600px',
@@ -78,14 +85,17 @@ function Projects() {
               backgroundColor: 'var(--color-surface)',
               border: '1px solid var(--color-border)',
               boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
-              transition: 'transform 220ms ease, box-shadow 220ms ease',
+              transition: 'box-shadow 220ms ease',
             }}
             onMouseEnter={e => {
               if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-              e.currentTarget.style.transform = 'translateY(-4px)';
+              gsap.to(e.currentTarget, { y: -4, duration: 0.22, ease: 'power2.out', overwrite: 'auto' });
               e.currentTarget.style.boxShadow = '0 16px 40px rgba(0,0,0,0.45)';
             }}
-            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)'; }}
+            onMouseLeave={e => {
+              gsap.to(e.currentTarget, { y: 0, duration: 0.22, ease: 'power2.out', overwrite: 'auto' });
+              e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+            }}
           >
             <img
               src={proj.image}
