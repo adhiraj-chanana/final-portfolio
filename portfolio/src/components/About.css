@@ -57,26 +57,3 @@
   outline-offset: 3px;
   border-radius: 2px;
 }
-
-/* Football and Michigan State each get one tasteful, card-scoped accent
-   color per request -- the global palette (border-glow, backgrounds, body
-   text) stays untouched everywhere else. */
-.about-football-heading {
-  color: #e3bb62;
-}
-
-.about-football-icon {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 0.25rem;
-}
-
-.about-msu-heading {
-  color: #3ecf8e;
-}
-
-.about-msu-icon {
-  width: 40px;
-  height: 34px;
-  margin-bottom: 0.25rem;
-}

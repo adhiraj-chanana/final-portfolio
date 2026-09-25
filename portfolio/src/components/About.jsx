@@ -9,33 +9,6 @@ import './About.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const SpartanHelmetIcon = () => (
-  <svg className="about-msu-icon" viewBox="0 0 48 40" fill="none" aria-hidden="true">
-    {/* dome + cheek flares, a generic warrior-helmet silhouette (not MSU's mark) */}
-    <path
-      d="M6 26 C6 12 14 4 24 4 C34 4 42 12 42 26 L42 28 C42 30.2 39.8 31.3 37.8 30.4 L33.2 28.4 L31 34.2 C30.1 36.6 27 37.2 24 35.6 C21 37.2 17.9 36.6 17 34.2 L14.8 28.4 L10.2 30.4 C8.2 31.3 6 30.2 6 28 Z"
-      fill="#3ecf8e"
-    />
-    <rect x="21" y="0.5" width="6" height="10" rx="3" fill="#3ecf8e" />
-    <path
-      d="M15 18 C15 24 18.5 28 24 28 C29.5 28 33 24 33 18 C33 13.6 29 11.5 24 11.5 C19 11.5 15 13.6 15 18 Z"
-      fill="var(--color-canvas)"
-    />
-  </svg>
-);
-
-const FootballIcon = () => (
-  <svg className="about-football-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-    <circle cx="24" cy="24" r="21" fill="var(--color-text)" stroke="var(--color-border-strong)" strokeWidth="1.5" />
-    <g fill="var(--color-canvas)">
-      <path d="M24 14.5 L29.5 18.4 L27.4 24.8 L20.6 24.8 L18.5 18.4 Z" />
-      <path d="M11.5 22 L16 19 L18 24.5 L14.5 28.5 L10 27 Z" />
-      <path d="M36.5 22 L32 19 L30 24.5 L33.5 28.5 L38 27 Z" />
-      <path d="M17 34 L20.5 29 L27.5 29 L31 34 L27 38 L21 38 Z" />
-    </g>
-  </svg>
-);
-
 const cards = [
   {
     id: 'bio',
@@ -78,8 +51,7 @@ const cards = [
     id: 'football',
     render: () => (
       <div className="magic-bento-card__content">
-        <FootballIcon />
-        <h3 className="magic-bento-card__title about-football-heading">Hala Madrid 🤍</h3>
+        <h3 className="magic-bento-card__title">Hala Madrid 🤍</h3>
         <p className="magic-bento-card__description">
           Real Madrid is my team: the comebacks, the late winners, the chaos. Nothing else like it.
         </p>
@@ -90,8 +62,7 @@ const cards = [
     id: 'msu',
     render: () => (
       <div className="magic-bento-card__content">
-        <SpartanHelmetIcon />
-        <h3 className="magic-bento-card__title about-msu-heading">Spartan since 2023</h3>
+        <h3 className="magic-bento-card__title">Spartan since 2023</h3>
         <p className="magic-bento-card__description">
           I love MSU: the people, the energy, the culture. The weather? We're still working on our relationship. Go Green! 💚
         </p>
