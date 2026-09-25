@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <section className="home" id="home">
       {/* Background Canvas */}
-      <div className="threads-bg">
+      <div className="threads-bg" aria-hidden="true">
         <Threads amplitude={1} distance={0} enableMouseInteraction={true} />
       </div>
 
@@ -18,10 +18,9 @@ const Home = () => {
         </h1>
         <TextType
           text={[
-            "I'm an Aspiring SWE",
-            "Currently developing in AI, ML, and Backend",
-            "Always exploring new ideas",
-            "Feel free to connect"
+            "I love building things.",
+            "I try not to break production. (No promises.)",
+            "I automate anything I have to do twice."
           ]}
           typingSpeed={65}
           pauseDuration={1500}
@@ -29,6 +28,17 @@ const Home = () => {
           cursorCharacter="|"
           className="text-large enhanced-text fade-in-delay"
         />
+        <div className="hero-cta-row fade-in-delay">
+          <a
+            className="hero-cta hero-cta-primary"
+            href="mailto:adhirajmohanchanana@gmail.com"
+          >
+            Email Me
+          </a>
+          <a className="hero-cta hero-cta-secondary" href="#projects">
+            View Projects
+          </a>
+        </div>
       </div>
     </section>
   );

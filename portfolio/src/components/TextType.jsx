@@ -1,7 +1,6 @@
-"use client";
-
 import { useEffect, useRef, useState, createElement } from "react";
 import { gsap } from "gsap";
+import { useReducedMotion } from "framer-motion";
 import "./TextType.css";
 
 const TextType = ({
@@ -32,6 +31,7 @@ const TextType = ({
   const [isVisible, setIsVisible] = useState(!startOnVisible);
   const cursorRef = useRef(null);
   const containerRef = useRef(null);
+  const prefersReducedMotion = useReducedMotion();
 
   const textArray = Array.isArray(text) ? text : [text];
 
@@ -65,20 +65,31 @@ const TextType = ({
   }, [startOnVisible]);
 
   useEffect(() => {
-    if (showCursor && cursorRef.current) {
-      gsap.set(cursorRef.current, { opacity: 1 });
-      gsap.to(cursorRef.current, {
-        opacity: 0,
-        duration: cursorBlinkDuration,
-        repeat: -1,
-        yoyo: true,
-        ease: "power2.inOut",
-      });
-    }
-  }, [showCursor, cursorBlinkDuration]);
+    if (!showCursor || !cursorRef.current) return;
+
+    gsap.set(cursorRef.current, { opacity: 1 });
+
+    if (prefersReducedMotion) return;
+
+    gsap.to(cursorRef.current, {
+      opacity: 0,
+      duration: cursorBlinkDuration,
+      repeat: -1,
+      yoyo: true,
+      ease: "power2.inOut",
+    });
+  }, [showCursor, cursorBlinkDuration, prefersReducedMotion]);
 
   useEffect(() => {
     if (!isVisible) return;
+
+    if (prefersReducedMotion) {
+      const firstText = reverseMode
+        ? textArray[0].split("").reverse().join("")
+        : textArray[0];
+      setDisplayedText(firstText);
+      return;
+    }
 
     let timeout;
     const currentText = textArray[currentTextIndex];
@@ -148,6 +159,7 @@ const TextType = ({
     reverseMode,
     variableSpeed,
     onSentenceComplete,
+    prefersReducedMotion,
   ]);
 
   const shouldHideCursor =

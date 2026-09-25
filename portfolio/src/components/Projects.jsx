@@ -1,17 +1,18 @@
-import React from 'react';
-import reprightImage from '../assets/repright.png';
-import snippetImage from '../assets/snippet.png';
-import webhookImage from '../assets/webhook.png';
-import pitchrankImage from '../assets/pitchrank.png';
+import React, { useRef } from 'react';
+import { gsap } from 'gsap';
+import reprightImage from '../assets/repright.jpg';
+import snippetImage from '../assets/snippet.jpg';
+import webhookImage from '../assets/webhook.jpg';
+import pitchrankImage from '../assets/pitchrank.jpg';
 import DecryptedText from './DecryptedText';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
-// ✅ Add a link per project (shown only if provided)
 const projects = [
   {
     title: 'AI Webhook Processor',
     description: 'An AI-powered webhook processing pipeline with intelligent LLM-based routing, a built-in evaluation framework, and a live monitoring dashboard.',
     image: webhookImage,
-    badge: '🤖 AI Pipeline',
+    category: 'AI Pipeline',
     link: 'https://webhook-ai-two.vercel.app/',
     linkLabel: 'Live Demo'
   },
@@ -19,7 +20,7 @@ const projects = [
     title: 'PitchRank',
     description: 'A daily pitch-training app that builds a practice streak, with AI-driven scoring of each pitch and a "boss character" feedback system for gamified critique.',
     image: pitchrankImage,
-    badge: '🎤 AI Coaching',
+    category: 'AI Coaching',
     link: 'https://pitchrank-wnal.vercel.app/',
     linkLabel: 'Live Demo'
   },
@@ -27,7 +28,7 @@ const projects = [
     title: 'Repright',
     description: 'AI-powered app that tracks your workout form in real-time to prevent injury and improve performance.',
     image: reprightImage,
-    badge: '🏋️‍♂️ Computer Vision',
+    category: 'Computer Vision',
     link: 'https://github.com/Rep-Right/exercise-recommender',
     linkLabel: 'View Repo'
   },
@@ -35,29 +36,34 @@ const projects = [
     title: 'SnippetShare',
     description: 'Modern snippet manager to save, search, and share reusable code across projects.',
     image: snippetImage,
-    badge: '💻 Dev Tool',
+    category: 'Dev Tool',
     link: 'https://marketplace.visualstudio.com/items?itemName=snippetsharedev.snippet-share&ssr=false#overview',
     linkLabel: 'View Repo'
   }
 ];
 
 function Projects() {
+  const gridRef = useRef(null);
+  useScrollReveal(gridRef, { selector: '.project-card', y: 32 });
+
   return (
     <section
       id="projects"
+      aria-labelledby="projects-heading"
       style={{
-        padding: '4rem 2rem',
-        background: '#0d0d0d',
-        minHeight: '100vh',
-        fontFamily: 'Inter, sans-serif',
-        color: '#fff',
+        padding: '5rem 2rem',
+        background: 'var(--color-canvas)',
+        minHeight: '100svh',
+        fontFamily: "'Archivo', sans-serif",
+        color: 'var(--color-text)',
       }}
     >
-      <h2 style={{ fontSize: '2.5rem', marginBottom: '3rem', textAlign: 'center' }}>
+      <h2 id="projects-heading" style={{ fontSize: '2.8rem', fontWeight: 800, letterSpacing: '-0.02em', marginBottom: '3rem', textAlign: 'center', fontFamily: "'Archivo', sans-serif" }}>
         My Projects
       </h2>
 
       <div
+        ref={gridRef}
         style={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -70,125 +76,99 @@ function Projects() {
         {projects.map((proj, idx) => (
           <div
             key={idx}
+            className="project-card"
             style={{
               flex: '1 1 480px',
               maxWidth: '600px',
-              borderRadius: '2rem',
+              borderRadius: '1.5rem',
               overflow: 'hidden',
-              backgroundColor: '#1a1a1a',
-              position: 'relative',
-              border: '2px solid #2a2a2a',
+              backgroundColor: 'var(--color-surface)',
+              border: '1px solid var(--color-border)',
               boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
-              transition: 'transform 220ms ease, box-shadow 220ms ease',
+              transition: 'box-shadow 220ms ease',
             }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(0,0,0,0.45)'; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)'; }}
+            onMouseEnter={e => {
+              if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+              gsap.to(e.currentTarget, { y: -4, duration: 0.22, ease: 'power2.out', overwrite: 'auto' });
+              e.currentTarget.style.boxShadow = '0 16px 40px rgba(0,0,0,0.45)';
+            }}
+            onMouseLeave={e => {
+              gsap.to(e.currentTarget, { y: 0, duration: 0.22, ease: 'power2.out', overwrite: 'auto' });
+              e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+            }}
           >
             <img
               src={proj.image}
               alt={proj.title}
-              style={{ width: '100%', height: '350px', objectFit: 'cover' }}
+              loading="lazy"
+              decoding="async"
+              style={{ width: '100%', aspectRatio: '16 / 10', objectFit: 'cover', display: 'block' }}
             />
 
-            <div
-              style={{
-                padding: '2rem',
-                backgroundColor: '#262626',
-                borderRadius: '1.2rem',
-                margin: '-3rem 1.5rem 1.5rem 1.5rem',
-                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.4)'
-              }}
-            >
-              <h3 style={{ fontSize: '1.7rem', marginBottom: '0.7rem', color: '#fff' }}>
+            <div style={{ padding: '1.75rem' }}>
+              <p style={{
+                margin: '0 0 0.5rem',
+                fontSize: '0.72rem',
+                fontWeight: 500,
+                fontFamily: "'IBM Plex Mono', monospace",
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: 'var(--color-accent)'
+              }}>
+                {proj.category}
+              </p>
+
+              <h3 style={{ fontSize: '1.7rem', fontWeight: 700, margin: '0 0 0.7rem', color: 'var(--color-text)' }}>
                 <DecryptedText text={proj.title} speed={60} maxIterations={15} characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890" />
               </h3>
 
-              <div style={{ marginBottom: '1.25rem', lineHeight: 1.6 }}>
-                <DecryptedText
-                  text={proj.description}
-                  speed={80}
-                  maxIterations={20}
-                  characters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
-                  animateOn="view"
-                  revealDirection="center"
-                />
-              </div>
+              <p style={{ margin: '0 0 1.25rem', lineHeight: 1.6, color: 'var(--color-text-secondary)' }}>
+                {proj.description}
+              </p>
 
-              {/* CTA Area */}
               {proj.link && (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <a
-                    href={proj.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${proj.linkLabel || 'Open'}: ${proj.title}`}
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '0.5rem',
-                      padding: '0.8rem 1.1rem',
-                      borderRadius: '9999px',
-                      fontSize: '0.95rem',
-                      fontWeight: 600,
-                      background: 'linear-gradient(135deg, #6ee7ff 0%, #a78bfa 50%, #ff8bd5 100%)',
-                      color: '#0b0b0b',
-                      textDecoration: 'none',
-                      boxShadow: '0 6px 18px rgba(167, 139, 250, 0.35)',
-                      transition: 'filter 160ms ease, transform 160ms ease',
-                    }}
-                    onMouseEnter={e => { e.currentTarget.style.filter = 'brightness(1.05)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-                    onMouseLeave={e => { e.currentTarget.style.filter = 'brightness(1.0)'; e.currentTarget.style.transform = 'translateY(0)'; }}
-                    onFocus={e => { e.currentTarget.style.outline = '2px solid #a78bfa'; e.currentTarget.style.outlineOffset = '3px'; }}
-                    onBlur={e => { e.currentTarget.style.outline = 'none'; e.currentTarget.style.outlineOffset = '0px'; }}
-                  >
-                    {proj.linkLabel || 'Open'}
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                      <path d="M14 3h7v7" stroke="#0b0b0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M21 3l-9 9" stroke="#0b0b0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M12 7H7a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4v-5" stroke="#0b0b0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </a>
-
-                  {/* Optional secondary action: copy link */}
-                  <button
-                    type="button"
-                    aria-label={`Copy link to ${proj.title}`}
-                    onClick={() => navigator.clipboard?.writeText(proj.link)}
-                    style={{
-                      padding: '0.7rem 1rem',
-                      borderRadius: '9999px',
-                      backgroundColor: 'transparent',
-                      border: '1px solid #3a3a3a',
-                      color: '#fff',
-                      fontSize: '0.9rem',
-                      cursor: 'pointer',
-                      transition: 'background-color 160ms ease, border-color 160ms ease',
-                    }}
-                    onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#2e2e2e'; e.currentTarget.style.borderColor = '#5a5a5a'; }}
-                    onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.borderColor = '#3a3a3a'; }}
-                  >
-                    Copy Link
-                  </button>
-                </div>
+                <a
+                  href={proj.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${proj.linkLabel || 'Open'}: ${proj.title}`}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.5rem',
+                    minHeight: '44px',
+                    padding: '0.8rem 1.1rem',
+                    borderRadius: '9999px',
+                    fontSize: '0.95rem',
+                    fontWeight: 600,
+                    background: 'var(--color-accent)',
+                    color: 'var(--color-accent-text)',
+                    textDecoration: 'none',
+                    boxShadow: '0 6px 18px rgba(94, 200, 255, 0.3)',
+                    transition: 'filter 160ms ease, transform 160ms ease',
+                  }}
+                  onMouseEnter={e => {
+                    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+                    e.currentTarget.style.filter = 'brightness(1.05)';
+                    e.currentTarget.style.transform = 'translateY(-1px)';
+                  }}
+                  onMouseLeave={e => { e.currentTarget.style.filter = 'brightness(1.0)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                  onMouseDown={e => { e.currentTarget.style.transition = 'transform 100ms cubic-bezier(0.23, 1, 0.32, 1)'; e.currentTarget.style.transform = 'scale(0.97)'; }}
+                  onMouseUp={e => { e.currentTarget.style.transition = 'filter 160ms ease, transform 160ms ease'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                  onTouchStart={e => { e.currentTarget.style.transition = 'transform 100ms cubic-bezier(0.23, 1, 0.32, 1)'; e.currentTarget.style.transform = 'scale(0.97)'; }}
+                  onTouchEnd={e => { e.currentTarget.style.transition = 'filter 160ms ease, transform 160ms ease'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                  onFocus={e => { e.currentTarget.style.outline = '2px solid var(--color-accent)'; e.currentTarget.style.outlineOffset = '3px'; }}
+                  onBlur={e => { e.currentTarget.style.outline = 'none'; e.currentTarget.style.outlineOffset = '0px'; }}
+                >
+                  {proj.linkLabel || 'Open'}
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M14 3h7v7" stroke="var(--color-accent-text)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M21 3l-9 9" stroke="var(--color-accent-text)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M12 7H7a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4v-5" stroke="var(--color-accent-text)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
               )}
-            </div>
-
-            <div
-              style={{
-                position: 'absolute',
-                top: '1rem',
-                left: '1rem',
-                backgroundColor: '#1f1f1f',
-                padding: '0.5rem 1.2rem',
-                borderRadius: '1.2rem',
-                fontSize: '0.85rem',
-                fontWeight: 500,
-                color: '#ffffff',
-                border: '1px solid #3a3a3a',
-                boxShadow: '0 2px 6px rgba(0, 0, 0, 0.3)'
-              }}
-            >
-              {proj.badge}
             </div>
           </div>
         ))}

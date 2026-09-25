@@ -1,24 +1,51 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import "@fontsource/archivo/latin-400.css";
+@import "@fontsource/archivo/latin-500.css";
+@import "@fontsource/archivo/latin-600.css";
+@import "@fontsource/archivo/latin-700.css";
+@import "@fontsource/archivo/latin-800.css";
+@import "@fontsource/archivo/latin-900.css";
+@import "@fontsource/ibm-plex-mono/latin-400.css";
+@import "@fontsource/ibm-plex-mono/latin-500.css";
+
+:root {
+  --color-canvas: #0d0d0d;
+  --color-surface: #161616;
+  --color-border: #2a2a2a;
+  --color-border-strong: #444444;
+
+  --color-text: #ffffff;
+  --color-text-secondary: #b8b8b8;
+  --color-text-muted: #8a8a8a;
+
+  --color-accent: #5ec8ff;
+  --color-accent-strong: #8ad8ff;
+  --color-accent-text: #05141c;
 }
-@import "@fontsource/inter";
+
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: #0d0d0d;
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 html {
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
 }
 
+button,
+a,
+[role="button"] {
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: 'IBM Plex Mono', source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }

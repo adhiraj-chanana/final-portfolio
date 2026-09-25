@@ -11,7 +11,6 @@ const SpotlightCard = ({ children, className = "", spotlightColor = "rgba(255, 2
 
     divRef.current.style.setProperty("--mouse-x", `${x}px`);
     divRef.current.style.setProperty("--mouse-y", `${y}px`);
-    divRef.current.style.setProperty("--spotlight-color", spotlightColor);
   };
 
   return (
@@ -19,6 +18,7 @@ const SpotlightCard = ({ children, className = "", spotlightColor = "rgba(255, 2
       ref={divRef}
       onMouseMove={handleMouseMove}
       className={`card-spotlight ${className}`}
+      style={{ "--spotlight-color": spotlightColor }}
     >
       {children}
     </div>

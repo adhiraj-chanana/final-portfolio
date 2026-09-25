@@ -1,0 +1,59 @@
+.about-section {
+  background: var(--color-canvas);
+  padding: 5rem 2rem;
+  color: var(--color-text);
+}
+
+.about-heading {
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-family: 'Archivo', sans-serif;
+  margin: 0 0 3rem;
+}
+
+/* Scrim behind the skydiving card's text so it stays legible over the
+   animated streaks, without needing a flat background that would hide
+   the animation entirely. */
+.magic-bento-card__content--scrim {
+  margin: -1.75rem;
+  margin-top: auto;
+  padding: 2.5rem 1.75rem 1.75rem;
+  background: linear-gradient(to top, var(--color-surface) 40%, transparent);
+}
+
+/* Bio and Skydiving are the two visual anchors -- a bigger heading than
+   the rest of the grid to carry that weight. */
+.about-anchor-heading {
+  font-size: 1.6rem;
+}
+
+.about-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: gap 160ms ease;
+}
+
+.about-link span {
+  transition: transform 160ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .about-link:hover span {
+    transform: translateX(3px);
+  }
+}
+
+.about-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}

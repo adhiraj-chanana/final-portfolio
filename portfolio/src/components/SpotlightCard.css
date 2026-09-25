@@ -3,21 +3,15 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    border-radius: 1.75rem;
-    border: 1px solid #222;
-    background-color: #111;
+    border-radius: 1.5rem;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-surface);
     padding: 2rem;
     overflow: hidden;
     transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
     --mouse-x: 50%;
     --mouse-y: 50%;
     --spotlight-color: rgba(255, 255, 255, 0.05);
-  }
-
-  .card-spotlight:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-    border-color: #333;
   }
 
   .card-spotlight::before {
@@ -32,9 +26,19 @@
     transition: opacity 0.5s ease;
     pointer-events: none;
   }
-  
-  .card-spotlight:hover::before,
+
   .card-spotlight:focus-within::before {
     opacity: 0.6;
   }
-  
+
+  @media (hover: hover) and (pointer: fine) {
+    .card-spotlight:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+      border-color: var(--color-border-strong);
+    }
+
+    .card-spotlight:hover::before {
+      opacity: 0.6;
+    }
+  }

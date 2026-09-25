@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 
 const styles = {
   wrapper: {
@@ -38,8 +38,14 @@ export default function DecryptedText({
   const [revealedIndices, setRevealedIndices] = useState(new Set());
   const [hasAnimated, setHasAnimated] = useState(false);
   const containerRef = useRef(null);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
+    if (prefersReducedMotion) {
+      setDisplayText(text)
+      return
+    }
+
     let interval
     let currentIteration = 0
 
@@ -160,10 +166,11 @@ export default function DecryptedText({
     revealDirection,
     characters,
     useOriginalCharsOnly,
+    prefersReducedMotion,
   ])
 
   useEffect(() => {
-    if (animateOn !== 'view') return
+    if (animateOn !== 'view' || prefersReducedMotion) return
 
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
@@ -191,10 +198,10 @@ export default function DecryptedText({
         observer.unobserve(currentRef)
       }
     }
-  }, [animateOn, hasAnimated])
+  }, [animateOn, hasAnimated, prefersReducedMotion])
 
   const hoverProps =
-    animateOn === 'hover'
+    animateOn === 'hover' && !prefersReducedMotion
       ? {
         onMouseEnter: () => setIsHovering(true),
         onMouseLeave: () => setIsHovering(false),

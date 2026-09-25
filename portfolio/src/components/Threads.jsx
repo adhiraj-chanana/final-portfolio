@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Renderer, Program, Mesh, Triangle, Color } from "ogl";
+import { useReducedMotion } from "framer-motion";
 
 import "./Threads.css";
 
@@ -129,6 +130,7 @@ const Threads = ({
 }) => {
   const containerRef = useRef(null);
   const animationFrameId = useRef();
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -185,42 +187,72 @@ const Threads = ({
     function handleMouseLeave() {
       targetMouse = [0.5, 0.5];
     }
-    if (enableMouseInteraction) {
+    const mouseInteractionActive = enableMouseInteraction && !prefersReducedMotion;
+    if (mouseInteractionActive) {
       container.addEventListener("mousemove", handleMouseMove);
       container.addEventListener("mouseleave", handleMouseLeave);
     }
 
-    function update(t) {
-      if (enableMouseInteraction) {
-        const smoothing = 0.05;
-        currentMouse[0] += smoothing * (targetMouse[0] - currentMouse[0]);
-        currentMouse[1] += smoothing * (targetMouse[1] - currentMouse[1]);
-        program.uniforms.uMouse.value[0] = currentMouse[0];
-        program.uniforms.uMouse.value[1] = currentMouse[1];
-      } else {
-        program.uniforms.uMouse.value[0] = 0.5;
-        program.uniforms.uMouse.value[1] = 0.5;
-      }
-      program.uniforms.iTime.value = t * 0.001;
+    let visibilityObserver;
 
+    if (prefersReducedMotion) {
+      // One static resting frame instead of a continuous render loop.
+      program.uniforms.uMouse.value[0] = 0.5;
+      program.uniforms.uMouse.value[1] = 0.5;
+      program.uniforms.iTime.value = 0;
       renderer.render({ scene: mesh });
+    } else {
+      const update = (t) => {
+        if (mouseInteractionActive) {
+          const smoothing = 0.05;
+          currentMouse[0] += smoothing * (targetMouse[0] - currentMouse[0]);
+          currentMouse[1] += smoothing * (targetMouse[1] - currentMouse[1]);
+          program.uniforms.uMouse.value[0] = currentMouse[0];
+          program.uniforms.uMouse.value[1] = currentMouse[1];
+        } else {
+          program.uniforms.uMouse.value[0] = 0.5;
+          program.uniforms.uMouse.value[1] = 0.5;
+        }
+        program.uniforms.iTime.value = t * 0.001;
+
+        renderer.render({ scene: mesh });
+        animationFrameId.current = requestAnimationFrame(update);
+      };
       animationFrameId.current = requestAnimationFrame(update);
+
+      // Pause the render loop entirely once the hero scrolls out of view --
+      // otherwise this keeps burning GPU/battery while the user reads
+      // Experience/Projects and never sees it.
+      visibilityObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            if (!animationFrameId.current) {
+              animationFrameId.current = requestAnimationFrame(update);
+            }
+          } else if (animationFrameId.current) {
+            cancelAnimationFrame(animationFrameId.current);
+            animationFrameId.current = null;
+          }
+        },
+        { threshold: 0 }
+      );
+      visibilityObserver.observe(container);
     }
-    animationFrameId.current = requestAnimationFrame(update);
 
     return () => {
       if (animationFrameId.current)
         cancelAnimationFrame(animationFrameId.current);
+      visibilityObserver?.disconnect();
       window.removeEventListener("resize", resize);
 
-      if (enableMouseInteraction) {
+      if (mouseInteractionActive) {
         container.removeEventListener("mousemove", handleMouseMove);
         container.removeEventListener("mouseleave", handleMouseLeave);
       }
       if (container.contains(gl.canvas)) container.removeChild(gl.canvas);
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
-  }, [color, amplitude, distance, enableMouseInteraction]);
+  }, [color, amplitude, distance, enableMouseInteraction, prefersReducedMotion]);
 
   return <div ref={containerRef} className="threads-container" {...rest} />;
 };
