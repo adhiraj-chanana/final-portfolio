@@ -193,6 +193,8 @@ const Threads = ({
       container.addEventListener("mouseleave", handleMouseLeave);
     }
 
+    let visibilityObserver;
+
     if (prefersReducedMotion) {
       // One static resting frame instead of a continuous render loop.
       program.uniforms.uMouse.value[0] = 0.5;
@@ -217,11 +219,30 @@ const Threads = ({
         animationFrameId.current = requestAnimationFrame(update);
       };
       animationFrameId.current = requestAnimationFrame(update);
+
+      // Pause the render loop entirely once the hero scrolls out of view --
+      // otherwise this keeps burning GPU/battery while the user reads
+      // Experience/Projects and never sees it.
+      visibilityObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            if (!animationFrameId.current) {
+              animationFrameId.current = requestAnimationFrame(update);
+            }
+          } else if (animationFrameId.current) {
+            cancelAnimationFrame(animationFrameId.current);
+            animationFrameId.current = null;
+          }
+        },
+        { threshold: 0 }
+      );
+      visibilityObserver.observe(container);
     }
 
     return () => {
       if (animationFrameId.current)
         cancelAnimationFrame(animationFrameId.current);
+      visibilityObserver?.disconnect();
       window.removeEventListener("resize", resize);
 
       if (mouseInteractionActive) {

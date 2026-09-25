@@ -11,9 +11,11 @@ const App = () => {
     <MotionConfig reducedMotion="user">
       <div className="app">
         <Navbar />
-        <Home />
-        <Experience />
-        <Projects />
+        <main>
+          <Home />
+          <Experience />
+          <Projects />
+        </main>
       </div>
     </MotionConfig>
   );

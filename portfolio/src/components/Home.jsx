@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <section className="home" id="home">
       {/* Background Canvas */}
-      <div className="threads-bg">
+      <div className="threads-bg" aria-hidden="true">
         <Threads amplitude={1} distance={0} enableMouseInteraction={true} />
       </div>
 

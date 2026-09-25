@@ -110,7 +110,7 @@ const avatarStyle = {
   alignItems: 'center',
   justifyContent: 'center',
   fontSize: '0.9rem',
-  fontWeight: 800,
+  fontWeight: 700,
   color: 'var(--color-accent-text)',
   flexShrink: 0,
   boxShadow: '0 4px 12px rgba(94, 200, 255, 0.3)'
@@ -155,14 +155,14 @@ const chipStyle = {
 
 const Experience = () => {
   return (
-    <div id="experience" style={{ background: 'var(--color-canvas)', minHeight: '100svh', padding: '5rem 1rem', color: 'var(--color-text)' }}>
+    <section id="experience" aria-label="Experience" style={{ background: 'var(--color-canvas)', minHeight: '100svh', padding: '5rem 1rem', color: 'var(--color-text)' }}>
       <h2 style={{ textAlign: 'center', fontSize: '2.8rem', marginBottom: '3rem', fontWeight: 400, fontFamily: "'Instrument Serif', Georgia, serif" }}>
         Experience
       </h2>
       <motion.div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(340px, 100%), 1fr))',
           gridAutoRows: '1fr',
           gap: '2rem',
           justifyContent: 'center',
@@ -213,7 +213,7 @@ const Experience = () => {
           </motion.div>
         ))}
       </motion.div>
-    </div>
+    </section>
   );
 };
 

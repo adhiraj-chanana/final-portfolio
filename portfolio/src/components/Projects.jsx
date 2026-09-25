@@ -1,8 +1,8 @@
 import React from 'react';
-import reprightImage from '../assets/repright.png';
-import snippetImage from '../assets/snippet.png';
-import webhookImage from '../assets/webhook.png';
-import pitchrankImage from '../assets/pitchrank.png';
+import reprightImage from '../assets/repright.jpg';
+import snippetImage from '../assets/snippet.jpg';
+import webhookImage from '../assets/webhook.jpg';
+import pitchrankImage from '../assets/pitchrank.jpg';
 import DecryptedText from './DecryptedText';
 
 const projects = [
@@ -89,6 +89,8 @@ function Projects() {
             <img
               src={proj.image}
               alt={proj.title}
+              loading="lazy"
+              decoding="async"
               style={{ width: '100%', aspectRatio: '16 / 10', objectFit: 'cover', display: 'block' }}
             />
 
