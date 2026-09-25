@@ -49,11 +49,11 @@ function Projects() {
         padding: '5rem 2rem',
         background: 'var(--color-canvas)',
         minHeight: '100svh',
-        fontFamily: "'IBM Plex Sans', sans-serif",
+        fontFamily: "'Archivo', sans-serif",
         color: 'var(--color-text)',
       }}
     >
-      <h2 id="projects-heading" style={{ fontSize: '2.8rem', fontWeight: 400, marginBottom: '3rem', textAlign: 'center', fontFamily: "'Instrument Serif', Georgia, serif" }}>
+      <h2 id="projects-heading" style={{ fontSize: '2.8rem', fontWeight: 800, letterSpacing: '-0.02em', marginBottom: '3rem', textAlign: 'center', fontFamily: "'Archivo', sans-serif" }}>
         My Projects
       </h2>
 

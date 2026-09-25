@@ -27,10 +27,10 @@
   
   .hero-name {
     font-size: 4.5rem;
-    font-weight: 400;
+    font-weight: 900;
     letter-spacing: -0.02em;
     color: #fff;
-    font-family: 'Instrument Serif', Georgia, serif;
+    font-family: 'Archivo', sans-serif;
     margin-bottom: 0.9rem;
   }
 
@@ -38,7 +38,7 @@
     font-size: 1.3rem;
     font-weight: 500;
     letter-spacing: -0.01em;
-    font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+    font-family: 'Archivo', 'Segoe UI', sans-serif;
     color: #f2f2f2;
     max-width: 34rem;
     margin: 0 0 1.75rem;
@@ -49,7 +49,7 @@
     font-size: 1.25rem;
     font-weight: 500;
     letter-spacing: -0.01em;
-    font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+    font-family: 'Archivo', 'Segoe UI', sans-serif;
     color: #8fa3b5;
     transition: opacity 0.5s ease-in-out;
   }
@@ -69,7 +69,7 @@
     min-height: 44px;
     padding: 0.85rem 1.5rem;
     border-radius: 9999px;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Archivo', sans-serif;
     font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
